@@ -8,7 +8,6 @@ import io.github.sanctumlabs.dig.infra.config.SEQUENCE_BIT_LEN
 import java.time.Instant
 import kotlin.math.pow
 
-
 class SnowflakeSequenceIdGenerator : SequenceIdGenerator {
     private val maxSequence = 2.0.pow(SEQUENCE_BIT_LEN).toInt()
     private val maxNodeVal = 2.0.pow(NODE_ID_BIT_LEN).toInt()
