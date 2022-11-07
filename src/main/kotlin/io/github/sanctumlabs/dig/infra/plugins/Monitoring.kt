@@ -1,15 +1,20 @@
 package io.github.sanctumlabs.dig.infra.plugins
 
-import io.ktor.server.plugins.callloging.*
-import org.slf4j.event.*
-import io.ktor.server.request.*
-import io.ktor.http.*
-import io.ktor.server.plugins.callid.*
-import io.micrometer.prometheus.*
-import io.ktor.server.metrics.micrometer.*
-import io.ktor.server.application.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
+import io.ktor.server.plugins.callloging.CallLogging
+import org.slf4j.event.Level
+import io.ktor.server.request.path
+import io.ktor.http.HttpHeaders
+import io.ktor.server.plugins.callid.callIdMdc
+import io.ktor.server.plugins.callid.CallId
+import io.micrometer.prometheus.PrometheusMeterRegistry
+import io.micrometer.prometheus.PrometheusConfig
+import io.ktor.server.metrics.micrometer.MicrometerMetrics
+import io.ktor.server.application.Application
+import io.ktor.server.application.install
+import io.ktor.server.application.call
+import io.ktor.server.response.respond
+import io.ktor.server.routing.routing
+import io.ktor.server.routing.get
 
 fun Application.configureMonitoring() {
     install(CallLogging) {
@@ -24,11 +29,11 @@ fun Application.configureMonitoring() {
         }
     }
     val appMicrometerRegistry = PrometheusMeterRegistry(PrometheusConfig.DEFAULT)
-    
-        install(MicrometerMetrics) {
-            registry = appMicrometerRegistry
-            // ...
-        }
+
+    install(MicrometerMetrics) {
+        registry = appMicrometerRegistry
+        // ...
+    }
 
     routing {
         get("/metrics-micrometer") {
