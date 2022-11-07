@@ -22,7 +22,7 @@ ARG Version=0.0.1
 
 # Copy source
 COPY build.gradle.kts gradle.properties settings.gradle.kts gradle ./
-COPY app app
+COPY . app
 
 # Execute the build
 RUN gradle buildFatJar --stacktrace -x test -Pversion=$Version --no-daemon
