@@ -1,11 +1,10 @@
-package io.github.sanctumlabs.plugins
+package io.github.sanctumlabs.dig.infra.plugins
 
 import io.ktor.server.plugins.callloging.*
 import org.slf4j.event.*
 import io.ktor.server.request.*
 import io.ktor.http.*
 import io.ktor.server.plugins.callid.*
-import io.ktor.server.plugins.*
 import io.micrometer.prometheus.*
 import io.ktor.server.metrics.micrometer.*
 import io.ktor.server.application.*

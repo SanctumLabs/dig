@@ -1,0 +1,5 @@
+ame: "CodeQL Configuration"
+
+paths-ignore:
+  - "**/build/"
+  - out/
