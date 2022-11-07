@@ -8,24 +8,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      build:
-        name: Build
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v2
+      # Ref: https://github.com/actions/checkout
+      - uses: actions/checkout@v3
 
-          - name: Run Build
-            run: ./gradlew build
+      - name: Run Build
+        run: ./gradlew build
 
-          - name: Upload App Build
-            uses: actions/upload-artifact@v2
-            with:
-              name: app-build
-              path: build/libs/dig-0.0.1.jar
+      - name: Upload App Build
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-build
+          path: build/libs/dig-all.jar
 
-          - name: Cleanup Gradle Cache
-            # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
-            # Restoring these files from a GitHub Actions cache might cause problems for future builds.
-            run: |
-              rm -f ~/.gradle/caches/modules-2/modules-2.lock
-              rm -f ~/.gradle/caches/modules-2/gc.properties
+      - name: Cleanup Gradle Cache
+        # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
+        # Restoring these files from a GitHub Actions cache might cause problems for future builds.
+        run: |
+          rm -f ~/.gradle/caches/modules-2/modules-2.lock
+          rm -f ~/.gradle/caches/modules-2/gc.properties

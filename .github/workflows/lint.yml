@@ -11,8 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Ref: https://github.com/actions/checkout
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -20,8 +21,9 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      # Ref: https://github.com/actions/cache
       - name: Cache Gradle packages
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -34,16 +36,17 @@ jobs:
         run: ./gradlew dependencies
 
   lint:
-    name: Linting
+    name: Code Linting
     runs-on: ubuntu-latest
     needs:
       - dependencies
 
     steps:
-      - uses: actions/checkout@v2
+      # Ref: https://github.com/actions/checkout
+      - uses: actions/checkout@v3
 
       - name: Restore Cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ~/.gradle/caches
@@ -52,9 +55,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
+      - name: Lint Application
+        run: ./gradlew detekt
+
+  dockerLint:
+    name: Dockerfile linting
+    runs-on: ubuntu-latest
+    steps:
       - uses: hadolint/hadolint-action@v2.0.0
         with:
           dockerfile: Dockerfile
-
-      - name: Lint Application
-        run: ./gradlew detekt

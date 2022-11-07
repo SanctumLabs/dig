@@ -13,7 +13,8 @@ jobs:
     name: Bitbucket Repo Sync
     steps:
 
-      -   uses: actions/checkout@v2
+      # Ref: https://github.com/actions/checkout
+      -   uses: actions/checkout@v3
           with:
             fetch-depth: 0
 
