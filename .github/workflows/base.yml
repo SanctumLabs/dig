@@ -1,14 +1,15 @@
-# This workflow will build a Java project with Gradle
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
+name: Base Workflow
 
-name: Test
-
-on: [ push ]
+on:
+  workflow_call:
+    inputs:
+      os:
+        required: true
+        type: string
 
 jobs:
-  test:
-    name: Test
-    runs-on: ubuntu-latest
+  setup:
+    runs-on: ${{ inputs.os }}
 
     steps:
       # Ref: https://github.com/actions/checkout
@@ -23,7 +24,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
-      # Ref: https://github.com/actions/cache
       - name: Cache Gradle packages
         uses: actions/cache@v3
         with:
@@ -36,6 +36,3 @@ jobs:
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
-
-      - name: Run tests
-        run: ./gradlew test
