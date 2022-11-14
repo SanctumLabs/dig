@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 val ktorVersion: String by project
 val kotlinVersion: String by project
 val logbackVersion: String by project
@@ -7,6 +9,9 @@ val koinKtor: String by project
 val mockkVersion: String by project
 val appVersion: String by project
 val detektVersion: String by project
+
+group = "io.github.sanctumlabs"
+version = appVersion
 
 plugins {
     application
@@ -20,8 +25,28 @@ repositories {
     mavenCentral()
 }
 
-group = "io.github.sanctumlabs"
-version = appVersion
+configure<JavaPluginExtension> {
+    sourceCompatibility = JavaVersion.VERSION_11
+}
+
+tasks {
+    withType<JavaCompile> {
+        sourceCompatibility = "${JavaVersion.VERSION_11}"
+        targetCompatibility = "${JavaVersion.VERSION_11}"
+    }
+
+    withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "${JavaVersion.VERSION_11}"
+        }
+    }
+}
+
+detekt {
+    toolVersion = detektVersion
+    source = files("src/main/kotlin", "src/test/kotlin")
+}
 
 application {
     mainClass.set("io.ktor.server.netty.EngineMain")
@@ -52,9 +77,4 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion")
     testImplementation("io.mockk:mockk:$mockkVersion")
-}
-
-detekt {
-    toolVersion = detektVersion
-    source = files("src/main/kotlin", "src/test/kotlin")
 }
