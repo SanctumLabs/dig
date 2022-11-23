@@ -1,5 +1,5 @@
 allprojects {
     tasks.withType(JavaCompile).configureEach {
-        outputs.doNotCacheIf("CodeQL scanning", { true })
+        outputs.doNotCacheIf("Code Scanning", { true })
     }
 }
