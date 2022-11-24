@@ -64,7 +64,10 @@ jobs:
   dockerLint:
     name: Dockerfile linting
     runs-on: ubuntu-latest
+    needs:
+      - dependencies
     steps:
-      - uses: hadolint/hadolint-action@v2.0.0
+      - uses: actions/checkout@v3
+      - uses: hadolint/hadolint-action@v2.1.0
         with:
           dockerfile: Dockerfile

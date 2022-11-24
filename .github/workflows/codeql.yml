@@ -68,13 +68,13 @@ jobs:
           languages: ${{ matrix.language }}
           config-file: ./.github/codeql/codeql-config.yml
 
-      #      # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
-      #      - name: Autobuild
-      #        uses: github/codeql-action/autobuild@v1
+      # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v1
 
-      - name: Compile with Gradle without Build Scan
-        if: ${{ matrix.language == 'java' }}
-        run: ./gradlew --init-script .github/workflows/codeql-analysis.init.gradle -S testClasses
+#      - name: Compile with Gradle without Build Scan
+#        if: ${{ matrix.language == 'java' }}
+#        run: ./gradlew --init-script .github/workflows/codeql-analysis.init.gradle -S testClasses
 
       - name: Cleanup Gradle Daemons
         run: ./gradlew --stop

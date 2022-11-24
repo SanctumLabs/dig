@@ -46,7 +46,7 @@ COPY --from=builder /app/build/libs/ .
 EXPOSE 8080
 
 # hadolint ignore=SC2028
-RUN echo "#!/bin/bash \n java -jar dig-$Version.jar" > ./entrypoint.sh && chmod +x ./entrypoint.sh
+RUN echo "#!/bin/bash \n java -jar dig-all.jar" > ./entrypoint.sh && chmod +x ./entrypoint.sh
 
 # Use non-root user and start
 USER $CONTAINER_USER_NAME
