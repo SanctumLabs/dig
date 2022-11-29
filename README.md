@@ -6,11 +6,11 @@
 [![Docker](https://github.com/SanctumLabs/dig/actions/workflows/docker.yml/badge.svg)](https://github.com/SanctumLabs/dig/actions/workflows/docker.yml)
 [![Lint](https://github.com/SanctumLabs/dig/actions/workflows/lint.yml/badge.svg)](https://github.com/SanctumLabs/dig/actions/workflows/lint.yml)
 
-A simple distributed ID generator built in Kotlin & [Ktor]() web framework.
+A simple distributed ID generator built in Kotlin & [Ktor](https://ktor.io/) web framework.
 
 ## Getting Started
 
-Ensure you have [gradle]() setup or you can use the [gradle wrapper](./gradlew) (
+Ensure you have [gradle](https://gradle.org/) setup or you can use the [gradle wrapper](./gradlew) (
 or [gradle wrapper for windows](./gradlew.bat) if on windows platform) to setup and install dependencies. Also ensure
 you have Java setup on your local development machine
 
@@ -39,7 +39,7 @@ java -jar dig-all.jar
 
 ## Building for Docker
 
-To build for [Docker](), you will need to have Docker installed locally.
+To build for [Docker](https://www.docker.com/), you will need to have Docker installed locally.
 The application can also be built to be run in a Docker container. There is a [Dockerfile](./Dockerfile) already
 setup & one can manually build a docker image with:
 
@@ -63,12 +63,14 @@ Tests can be run with the `./gradlew test` command
 
 ## Lint checks
 
-Linting has been setup with [detekt]() and can be used with the command `./gradlew detekt`
+Linting has been setup with [detekt](https://detekt.dev/) and can be used with the command `./gradlew detekt`
 
 ## Continuous Integration & Continuous Deployment(CI/CD)
 
-[Github Actions]() is used to perform CI/CD for this project and the workflows can be found in the
+[Github Actions](https://docs.github.com/en/actions) is used to perform CI/CD for this project and the workflows can be
+found in the
 directory [workflows](./.github/workflows). However, this is not limited to Github Actions as other setups also exist
 such as
-[Gitlab]() & [Bitbucket Pipelines]() whose config can be found [here](./.gitlab-ci.yml)
+[Gitlab](https://docs.gitlab.com/ee/ci/) & [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) whose
+config can be found [here](./.gitlab-ci.yml)
 & [here](./bitbucket-pipelines.yml) respectively. 
