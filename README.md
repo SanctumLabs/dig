@@ -22,7 +22,7 @@ Alternatively, you can build a Jar file and run it directly from the Jar file.
 
 Once you have a running application, simply make a HTTP GET request to get an ID:
 
-```
+``` bash
 $ curl --request GET --url http://localhost:8080/dig
 {"id":"7003240899912138752"}
 ```
@@ -33,7 +33,7 @@ You can build the application with `./gradlew build` which will create a jar fil
 directory(not pushed to VCS).
 Once you have a Jaf file built, you can run the application with:
 
-```
+``` bash
 java -jar dig-all.jar
 ```
 
@@ -43,7 +43,7 @@ To build for [Docker](https://www.docker.com/), you will need to have Docker ins
 The application can also be built to be run in a Docker container. There is a [Dockerfile](./Dockerfile) already
 setup & one can manually build a docker image with:
 
-```
+``` bash
 docker build -t <IMAGE_NAME> .
 ```
 
@@ -51,7 +51,7 @@ docker build -t <IMAGE_NAME> .
 
 Alternatively, you can build a docker image using gradle:
 
-```
+``` bash
 ./gradlew buildImage
 ```
 
@@ -73,4 +73,11 @@ directory [workflows](./.github/workflows). However, this is not limited to Gith
 such as
 [Gitlab](https://docs.gitlab.com/ee/ci/) & [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines) whose
 config can be found [here](./.gitlab-ci.yml)
-& [here](./bitbucket-pipelines.yml) respectively. 
+& [here](./bitbucket-pipelines.yml) respectively.
+
+## Built with
+
+- Kotlin - Programming Language
+- [Ktor](https://ktor.io/) -  Web Framework
+- [Gradle](https://gradle.org/) - build system
+- [Detekt](https://detekt.dev/) -  Linter
