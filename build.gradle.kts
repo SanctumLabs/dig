@@ -18,7 +18,7 @@ version = appVersion
 
 plugins {
     application
-    kotlin("jvm") version "1.8.21"
+    kotlin("jvm") version "1.8.22"
     id("io.ktor.plugin") version "2.3.1"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.8.21"
     id("io.gitlab.arturbosch.detekt") version "1.23.0"
