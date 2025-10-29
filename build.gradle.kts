@@ -20,7 +20,7 @@ plugins {
     application
     kotlin("jvm") version "2.2.20"
     id("io.ktor.plugin") version "3.3.1"
-    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.20"
+    id("org.jetbrains.kotlin.plugin.serialization") version "2.2.21"
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
 }
 
